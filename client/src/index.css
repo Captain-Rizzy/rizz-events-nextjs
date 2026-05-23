@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Art Deco Color Palette */
+    --background: 0 0% 5%;
+    --foreground: 60 100% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 60 100% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 60 100% 95%;
+    --muted: 0 0% 30%;
+    --muted-foreground: 60 100% 85%;
+    --accent: 45 100% 55%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 100% 95%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 45 100% 55%;
+    --radius: 0px;
+
+    /* Art Deco Typography */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+
+    /* Art Deco Spacing & Shadows */
+    --shadow-sm: 0 2px 8px rgba(212, 175, 55, 0.1);
+    --shadow-md: 0 4px 16px rgba(212, 175, 55, 0.15);
+    --shadow-lg: 0 8px 32px rgba(212, 175, 55, 0.2);
+    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  /* Serif Typography for Headlines */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl font-bold tracking-tight;
+    font-weight: 900;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  /* Art Deco Decorative Elements */
+  .deco-line {
+    @apply border-t-2 border-accent;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(45, 100%, 55%),
+      transparent
+    );
+  }
+
+  .deco-corner {
+    position: relative;
+  }
+
+  .deco-corner::before,
+  .deco-corner::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(45, 100%, 55%);
+  }
+
+  .deco-corner::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .deco-corner::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+  }
+
+  /* Luxury Hover Effects */
+  button, a {
+    @apply transition-all duration-200;
+  }
+
+  /* Container */
+  .container {
+    @apply mx-auto px-4 md:px-6;
+    max-width: 1280px;
+  }
+
+  /* Flex defaults */
+  .flex {
+    @apply flex min-w-0 min-h-0;
+  }
+
+  /* Focus ring */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Art Deco Section */
+  .section-deco {
+    @apply relative py-20 md:py-32;
+    background: linear-gradient(
+      135deg,
+      hsl(0, 0%, 5%) 0%,
+      hsl(0, 0%, 8%) 50%,
+      hsl(0, 0%, 5%) 100%
+    );
+  }
+
+  /* Luxury Card */
+  .card-luxury {
+    @apply bg-card border border-accent/20 p-8 relative overflow-hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(45, 100%, 55%),
+      transparent
+    );
+  }
+
+  /* Gold Accent Text */
+  .text-gold {
+    @apply text-accent;
+  }
+
+  .text-gold-glow {
+    @apply text-accent;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+
+  /* Geometric Divider */
+  .divider-deco {
+    @apply relative h-1 bg-gradient-to-r from-transparent via-accent to-transparent my-8;
+  }
+
+  /* Stepped Pattern */
+  .stepped-pattern {
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        hsl(45, 100%, 55%) 0px,
+        hsl(45, 100%, 55%) 2px,
+        transparent 2px,
+        transparent 20px
+      );
+    height: 4px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+}
